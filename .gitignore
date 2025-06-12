@@ -1,0 +1,41 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# Visual Studio / Rider
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Builds (if stored here)
+*.apk
+*.aab
+*.exe
+*.app
+*.zip
+*.tar.gz
+*.x86
+*.x86_64
+*.webgl
+
+# Crash reports
+sysinfo.txt
+
+# Unity C
+
