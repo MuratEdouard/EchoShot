@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d487d3c6bfd4c8e439f44a58c7aa62a3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204433
+  packageName: 'Athazagoraphobia: Stylized Jungles'
+  packageVersion: 1.1.0
+  assetPath: Assets/Distant Lands/Athazagoraphobia - Stylized Jungle/Contents/Utilites/Scripts/NoiseBounce.cs
+  uploadId: 692796

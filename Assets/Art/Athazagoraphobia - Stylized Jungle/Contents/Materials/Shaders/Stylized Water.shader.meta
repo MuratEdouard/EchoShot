@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 73722a696738ebe4fbc7c234738b8ca8
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204433
+  packageName: 'Athazagoraphobia: Stylized Jungles'
+  packageVersion: 1.1.0
+  assetPath: Assets/Distant Lands/Athazagoraphobia - Stylized Jungle/Contents/Materials/Shaders/Stylized
+    Water.shader
+  uploadId: 692796

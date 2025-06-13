@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f507c109b599d874d8611128ac21f0d0
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204433
+  packageName: 'Athazagoraphobia: Stylized Jungles'
+  packageVersion: 1.1.0
+  assetPath: Assets/Distant Lands/Athazagoraphobia - Stylized Jungle/Contents/Materials/Shaders/Stylized
+    Terrain Add Pass.shader
+  uploadId: 692796
