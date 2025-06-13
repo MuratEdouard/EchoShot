@@ -3,24 +3,25 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 50f;
+    public float lifeTime = 5f;
     public GameObject explosionEffectPrefab;
 
-    private bool launched = false;
-
-    public void Launch()
-    {
-        launched = true;
-    }
+    private float lifeTimer = 0f;
 
     void Update()
     {
-        if (launched)
+        // Move bullet respecting gameplaySpeed multiplier
+        float delta = Time.unscaledDeltaTime * GameManager.gameplaySpeed;
+        transform.position += transform.forward * speed * delta;
+
+        lifeTimer += delta;
+        if (lifeTimer >= lifeTime)
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            Explode();
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         Explode();
     }
@@ -31,7 +32,6 @@ public class Bullet : MonoBehaviour
         {
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
         }
-
         Destroy(gameObject);
     }
 }

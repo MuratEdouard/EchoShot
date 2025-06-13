@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,29 +6,26 @@ public class GunController : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform muzzleTransform;
-    public int maxBullets = 10;
-    public float fireInterval = 0.2f;
-    public float placementInterval = 0.15f;
 
-    private readonly Queue<GameObject> bulletsQueue = new Queue<GameObject>();
-    private float fireTimer = 0f;
-    private float placeTimer = 0f;
-    private bool isFiring = false;
-    private bool placeBulletRequest = false;
+    [Header("Freeze Settings")]
+    public float freezeDuration = 3f;
+    public float reloadDuration = 2f;
+    public int maxBulletsPerFreeze = 3;
+    public float freezeDelay = 0.5f;
+
+    private int bulletsPlaced = 0;
+    private float freezeTimer = 0f;
+    private float reloadTimer = 0f;
+
+    private bool isFrozen = false;
+    private bool isReloading = false;
 
     private PlayerInputActions inputActions;
 
     void Awake()
     {
         inputActions = new PlayerInputActions();
-
-        inputActions.Player.PlaceBullet.performed += _ => placeBulletRequest = true;
-        inputActions.Player.FireBullet.started += _ => isFiring = true;
-        inputActions.Player.FireBullet.canceled += _ =>
-        {
-            isFiring = false;
-            fireTimer = 0f;
-        };
+        inputActions.Player.PlaceBullet.performed += ctx => TryPlaceBullet();
     }
 
     void OnEnable()
@@ -43,41 +40,67 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        // Place bullet with interval
-        placeTimer += Time.deltaTime;
-        if (placeBulletRequest && placeTimer >= placementInterval)
+        float delta = Time.unscaledDeltaTime * GameManager.gameplaySpeed;
+
+        if (isReloading)
         {
-            SpawnBullet();
-            placeTimer = 0f;
-            placeBulletRequest = false;
+            reloadTimer += delta;
+            if (reloadTimer >= reloadDuration)
+            {
+                isReloading = false;
+                reloadTimer = 0f;
+            }
+            return;
         }
 
-        // Fire bullets with interval
-        if (isFiring && bulletsQueue.Count > 0)
+        if (isFrozen)
         {
-            fireTimer += Time.deltaTime;
-            if (fireTimer >= fireInterval)
+            freezeTimer += delta;
+            if (bulletsPlaced >= maxBulletsPerFreeze || freezeTimer >= freezeDuration)
             {
-                GameObject bullet = bulletsQueue.Dequeue();
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
-                if (bulletScript != null)
-                {
-                    bulletScript.Launch();
-                }
-                fireTimer = 0f;
+                ResumeTime();
             }
         }
     }
 
-    void SpawnBullet()
+    void TryPlaceBullet()
     {
-        if (bulletsQueue.Count >= maxBullets)
-        {
-            GameObject oldBullet = bulletsQueue.Dequeue();
-            Destroy(oldBullet);
-        }
+        if (isReloading || bulletsPlaced >= maxBulletsPerFreeze)
+            return;
 
-        GameObject bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
-        bulletsQueue.Enqueue(bullet);
+        PlaceBullet();
+        bulletsPlaced++;
+
+        if (!isFrozen && !IsInvoking(nameof(StartFreeze)))
+        {
+            StartCoroutine(FreezeAfterDelay());
+        }
+    }
+
+    void PlaceBullet()
+    {
+        Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+    }
+
+    IEnumerator FreezeAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(freezeDelay);
+        StartFreeze();
+    }
+
+    void StartFreeze()
+    {
+        GameManager.gameplaySpeed = 0.05f;
+        isFrozen = true;
+        freezeTimer = 0f;
+    }
+
+    void ResumeTime()
+    {
+        GameManager.gameplaySpeed = 1f;
+        isFrozen = false;
+        isReloading = true;
+        reloadTimer = 0f;
+        bulletsPlaced = 0;
     }
 }

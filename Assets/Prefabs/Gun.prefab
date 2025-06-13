@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 3332045332410667164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.337}
+  m_LocalPosition: {x: 0, y: 0, z: 0.539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8549038096138749096, guid: 112d35ad998860051bf1d41cddc99cd9, type: 3}
   muzzleTransform: {fileID: 4540548924419189149}
-  maxBullets: 10
-  fireInterval: 0.2
-  fireKey: 324
+  freezeDuration: 3
+  reloadDuration: 2
+  maxBulletsPerFreeze: 3
+  placementInterval: 0.2

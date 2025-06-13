@@ -234,7 +234,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &4701926623049297763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -269,4 +269,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  lifeTime: 5
   explosionEffectPrefab: {fileID: 8879577745757640234, guid: fe15b288db6524424935d96a84414b7c, type: 3}
