@@ -2001,6 +2001,9 @@ MonoBehaviour:
   gravity: -20
   mouseSensitivity: 0.1
   cameraTransform: {fileID: 330585546}
+  airAcceleration: 5
+  airDeceleration: 8
+  airControlResponsiveness: 0.5
 --- !u!54 &2135515662
 Rigidbody:
   m_ObjectHideFlags: 0

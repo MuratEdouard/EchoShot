@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public Transform cameraTransform;
 
+    public float airAcceleration = 5f;   // How fast to reach target velocity in air
+    public float airDeceleration = 8f;   // How fast to slow down in air
+    public float airControlResponsiveness = 1.5f; // Air control multiplier (more = better control)
+
     private Rigidbody rb;
     private float verticalLookRotation = 0f;
 
@@ -19,8 +23,11 @@ public class PlayerController : MonoBehaviour
     private int maxJumps = 2;
 
     private float velocityY = 0f; // Custom vertical velocity
+    private Vector3 velocityX = Vector3.zero; // Horizontal velocity
 
     private PlayerInputActions inputActions;
+
+    private bool IsGrounded = false; // Track grounded state
 
     void Awake()
     {
@@ -34,6 +41,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.None;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
     void Start()
@@ -63,6 +71,7 @@ public class PlayerController : MonoBehaviour
             velocityY = jumpVelocity;
             jumpPressed = false;
             jumpCount++;
+            IsGrounded = false; // Left ground on jump
         }
     }
 
@@ -71,18 +80,48 @@ public class PlayerController : MonoBehaviour
         float delta = Time.fixedDeltaTime;
         float timeScale = GameManager.gameplaySpeed;
 
-        // Gravity is always applied with real-world delta
+        // Apply gravity (vertical velocity)
         velocityY += gravity * delta * timeScale;
 
-        // Horizontal move is scaled by game time
-        Vector3 direction = transform.right * moveInput.x + transform.forward * moveInput.y;
-        Vector3 horizontalMove = direction.normalized * moveSpeed * delta * timeScale;
+        // Calculate target horizontal velocity (XZ plane)
+        Vector3 inputDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 targetVelocity = inputDirection.normalized * moveSpeed;
 
-        // Vertical move ALSO scaled by game time
+        if (IsGrounded)
+        {
+            velocityX = targetVelocity;
+        }
+        else
+        {
+            if (moveInput.magnitude > 0.1f)
+            {
+                // Alignment-based air control
+                float alignment = Vector3.Dot(velocityX.normalized, targetVelocity.normalized);
+                alignment = (alignment + 1f) * 0.5f; // [-1,1] → [0,1]
+
+                float blendFactor = airAcceleration * delta * Mathf.Lerp(0.5f, 2f, alignment) * airControlResponsiveness;
+                velocityX = Vector3.Lerp(velocityX, targetVelocity, blendFactor);
+            }
+            else
+            {
+                velocityX = Vector3.MoveTowards(velocityX, Vector3.zero, airDeceleration * delta);
+            }
+
+            // Optional: Clamp to max speed
+            if (velocityX.magnitude > moveSpeed)
+                velocityX = velocityX.normalized * moveSpeed;
+        }
+
+        // Movement vectors
+        Vector3 horizontalMove = velocityX * delta * timeScale;
         Vector3 verticalMove = Vector3.up * velocityY * delta * timeScale;
 
-        // Final movement
+        // Apply movement
         rb.MovePosition(rb.position + horizontalMove + verticalMove);
+
+        // Prevent physics drift
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     void LookAround()
@@ -105,6 +144,7 @@ public class PlayerController : MonoBehaviour
             {
                 velocityY = 0f;
                 jumpCount = 0;
+                IsGrounded = true;
                 break;
             }
         }
