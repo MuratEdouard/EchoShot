@@ -11,7 +11,6 @@ public class GunController : MonoBehaviour
     public float freezeDuration = 2f;
     public float reloadDuration = 2f;
     public int maxBulletsPerFreeze = 3;
-    public float freezeDelay = 0.5f;
 
     private int bulletsPlaced = 0;
     private float freezeTimer = 0f;

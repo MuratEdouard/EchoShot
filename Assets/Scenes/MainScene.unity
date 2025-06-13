@@ -848,7 +848,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355428, y: 0.68301344, z: -0.6123705, w: 0.183015}
   m_LocalPosition: {x: -22.62, y: 1, z: -4}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -956,7 +956,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.3, y: 1, z: -13.47}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -1105,7 +1105,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -32.87, y: 3.12, z: -8.9}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -1213,7 +1213,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.9, y: 1, z: 7.7}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -1609,7 +1609,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.3, y: 1, z: 16.5}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -1717,7 +1717,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.62, y: 1, z: -16.81}
-  m_LocalScale: {x: 10, y: 3, z: 0.1}
+  m_LocalScale: {x: 10, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458814905}
@@ -1996,8 +1996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418ee87db9caafe17b43ead9b7597b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpVelocity: 8
+  moveSpeed: 15
+  jumpVelocity: 12
   gravity: -20
   mouseSensitivity: 0.1
   cameraTransform: {fileID: 330585546}
@@ -2026,7 +2026,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!1001 &5046903561181822870
 PrefabInstance:

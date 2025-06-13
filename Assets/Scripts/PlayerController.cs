@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         inputActions.Player.Jump.performed += ctx => jumpPressed = true;
 
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.None;
     }
 
@@ -99,11 +99,14 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        // Simple grounding logic
-        if (velocityY < 0f)
+        foreach (ContactPoint contact in collision.contacts)
         {
-            velocityY = 0f;
-            jumpCount = 0;
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
+            {
+                velocityY = 0f;
+                jumpCount = 0;
+                break;
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     private float lifeTimer = 0f;
     private float fullSpeedTimeElapsed = 0f;
-    private float fullSpeedDuration = 0.1f; // Bullet travels at full speed for a short time at first
+    private float fullSpeedDuration = 0.05f; // Bullet travels at full speed for a short time at first
 
     void Update()
     {
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         // Choose speed factor: normal (1.0) for first 0.5s, then use gameplaySpeed
         float speedFactor = fullSpeedTimeElapsed < fullSpeedDuration ? 1f : GameManager.gameplaySpeed;
 
-        float delta = Time.unscaledDeltaTime * speedFactor;
+        float delta = Time.deltaTime * speedFactor;
         transform.position += transform.forward * speed * delta;
 
         lifeTimer += delta;
