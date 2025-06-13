@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8549038096138749096, guid: 112d35ad998860051bf1d41cddc99cd9, type: 3}
   muzzleTransform: {fileID: 4540548924419189149}
-  freezeDuration: 3
+  freezeDuration: 2
   reloadDuration: 2
   maxBulletsPerFreeze: 3
-  placementInterval: 0.2
+  freezeDelay: 0.1

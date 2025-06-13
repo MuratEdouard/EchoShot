@@ -2,22 +2,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 50f;
-    public float lifeTime = 5f;
+    public float speed = 100f;
+    public float lifeTime = 2f;
     public GameObject explosionEffectPrefab;
 
     private float lifeTimer = 0f;
+    private float fullSpeedTimeElapsed = 0f;
+    private float fullSpeedDuration = 0.1f; // Bullet travels at full speed for a short time at first
 
     void Update()
     {
-        // Move bullet respecting gameplaySpeed multiplier
-        float delta = Time.unscaledDeltaTime * GameManager.gameplaySpeed;
+        fullSpeedTimeElapsed += Time.deltaTime;
+
+        // Choose speed factor: normal (1.0) for first 0.5s, then use gameplaySpeed
+        float speedFactor = fullSpeedTimeElapsed < fullSpeedDuration ? 1f : GameManager.gameplaySpeed;
+
+        float delta = Time.unscaledDeltaTime * speedFactor;
         transform.position += transform.forward * speed * delta;
 
         lifeTimer += delta;
         if (lifeTimer >= lifeTime)
         {
-            Explode();
+            Destroy(gameObject);
         }
     }
 

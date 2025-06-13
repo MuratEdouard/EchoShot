@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour
     public Transform muzzleTransform;
 
     [Header("Freeze Settings")]
-    public float freezeDuration = 3f;
+    public float freezeDuration = 2f;
     public float reloadDuration = 2f;
     public int maxBulletsPerFreeze = 3;
     public float freezeDelay = 0.5f;
@@ -40,7 +40,7 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        float delta = Time.unscaledDeltaTime * GameManager.gameplaySpeed;
+        float delta = Time.deltaTime * GameManager.gameplaySpeed;
 
         if (isReloading)
         {
@@ -55,7 +55,7 @@ public class GunController : MonoBehaviour
 
         if (isFrozen)
         {
-            freezeTimer += delta;
+            freezeTimer += Time.deltaTime;
             if (bulletsPlaced >= maxBulletsPerFreeze || freezeTimer >= freezeDuration)
             {
                 ResumeTime();
@@ -71,21 +71,15 @@ public class GunController : MonoBehaviour
         PlaceBullet();
         bulletsPlaced++;
 
-        if (!isFrozen && !IsInvoking(nameof(StartFreeze)))
+        if (!isFrozen)
         {
-            StartCoroutine(FreezeAfterDelay());
+            StartFreeze();
         }
     }
 
     void PlaceBullet()
     {
         Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
-    }
-
-    IEnumerator FreezeAfterDelay()
-    {
-        yield return new WaitForSecondsRealtime(freezeDelay);
-        StartFreeze();
     }
 
     void StartFreeze()

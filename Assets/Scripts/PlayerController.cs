@@ -1,24 +1,24 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float jumpVelocity = 12f; // Initial upward velocity
+    public float gravity = -20f;    // Custom gravity (stronger for snappy feel)
     public float mouseSensitivity = 2f;
     public Transform cameraTransform;
 
     private Rigidbody rb;
     private float verticalLookRotation = 0f;
-    private bool isGrounded;
 
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool jumpPressed;
 
     private int jumpCount = 0;
-    private int maxJumps = 2; // For double jump
+    private int maxJumps = 2;
+
+    private float velocityY = 0f; // Custom vertical velocity
 
     private PlayerInputActions inputActions;
 
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.interpolation = RigidbodyInterpolation.None;
     }
 
     void Start()
@@ -53,14 +54,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Slow down sight a bit
         float speedFactor = Mathf.Lerp(1f, 0.5f, 1f - GameManager.gameplaySpeed);
         lookInput = inputActions.Player.Look.ReadValue<Vector2>() * speedFactor;
         LookAround();
 
         if (jumpPressed && jumpCount < maxJumps)
         {
-            rb.AddForce(Vector3.up * jumpForce * GameManager.gameplaySpeed, ForceMode.Impulse);
+            velocityY = jumpVelocity;
             jumpPressed = false;
             jumpCount++;
         }
@@ -68,21 +68,21 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        float delta = Time.fixedDeltaTime;
+        float timeScale = GameManager.gameplaySpeed;
 
-        // Custom gravity scaled by gameplaySpeed
-        Vector3 gravity = Physics.gravity * GameManager.gameplaySpeed;
-        rb.AddForce(gravity, ForceMode.Acceleration);
-    }
+        // Gravity is always applied with real-world delta
+        velocityY += gravity * delta * timeScale;
 
-    void Move()
-    {
-        float delta = Time.unscaledDeltaTime * GameManager.gameplaySpeed;
-
+        // Horizontal move is scaled by game time
         Vector3 direction = transform.right * moveInput.x + transform.forward * moveInput.y;
-        Vector3 move = direction.normalized * moveSpeed * delta;
-        Vector3 newPos = rb.position + move;
-        rb.MovePosition(newPos);
+        Vector3 horizontalMove = direction.normalized * moveSpeed * delta * timeScale;
+
+        // Vertical move ALSO scaled by game time
+        Vector3 verticalMove = Vector3.up * velocityY * delta * timeScale;
+
+        // Final movement
+        rb.MovePosition(rb.position + horizontalMove + verticalMove);
     }
 
     void LookAround()
@@ -99,13 +99,11 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        // Reset jumpCount when grounded
-        isGrounded = true;
-        jumpCount = 0;
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
+        // Simple grounding logic
+        if (velocityY < 0f)
+        {
+            velocityY = 0f;
+            jumpCount = 0;
+        }
     }
 }
