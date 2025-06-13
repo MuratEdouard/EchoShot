@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookInput;
     private bool jumpPressed;
 
+    private int jumpCount = 0;
+    private int maxJumps = 2; // For double jump
+
     private PlayerInputActions inputActions;
 
     void Awake()
@@ -38,7 +41,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-
     void OnEnable()
     {
         inputActions.Enable();
@@ -56,18 +58,18 @@ public class PlayerController : MonoBehaviour
         lookInput = inputActions.Player.Look.ReadValue<Vector2>() * speedFactor;
         LookAround();
 
-        // Delay jump based on gameplay speed
-        if (jumpPressed && isGrounded)
+        if (jumpPressed && jumpCount < maxJumps)
         {
             rb.AddForce(Vector3.up * jumpForce * GameManager.gameplaySpeed, ForceMode.Impulse);
             jumpPressed = false;
+            jumpCount++;
         }
     }
 
     void FixedUpdate()
     {
         Move();
-        
+
         // Custom gravity scaled by gameplaySpeed
         Vector3 gravity = Physics.gravity * GameManager.gameplaySpeed;
         rb.AddForce(gravity, ForceMode.Acceleration);
@@ -97,7 +99,9 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
+        // Reset jumpCount when grounded
         isGrounded = true;
+        jumpCount = 0;
     }
 
     void OnCollisionExit(Collision collision)
