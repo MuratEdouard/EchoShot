@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PlaceBullet",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "2ab92e61-359a-4143-98c0-0a575ed9b14c",
                     "expectedControlType": "",
@@ -489,7 +489,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "PlaceBullet",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

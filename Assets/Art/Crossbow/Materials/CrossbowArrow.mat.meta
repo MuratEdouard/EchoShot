@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 12d73585489266349b0eca08771ad60e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Materials/CrossbowArrow.mat
+  uploadId: 375870

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 289451139fc3943448c80193e83d1db8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Prefabs/CrossbowArrow.prefab
+  uploadId: 375870

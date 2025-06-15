@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac5436b7a4486f346875fc0733dc3f5e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Meshes/CrossbowAnim.controller
+  uploadId: 375870

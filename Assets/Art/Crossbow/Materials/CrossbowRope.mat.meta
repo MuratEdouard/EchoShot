@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80b2d630aa1f3cd4f90ec90a6aa48d32
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Materials/CrossbowRope.mat
+  uploadId: 375870

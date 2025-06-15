@@ -4,19 +4,21 @@ using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    public GameObject arrowPrefab;
     public Transform muzzleTransform;
+    public Animator animator;
 
     [Header("Freeze Settings")]
     public float freezeDuration = 2f;
     public float reloadDuration = 2f;
-    public int maxBulletsPerFreeze = 3;
+    public int maxArrowsPerFreeze = 3;
 
-    private int bulletsPlaced = 0;
+    private int arrowsPlaced = 0;
     private float freezeTimer = 0f;
     private float reloadTimer = 0f;
 
     private bool isFrozen = false;
+    private bool isCharging = false;
     private bool isReloading = false;
 
     private PlayerInputActions inputActions;
@@ -24,7 +26,7 @@ public class GunController : MonoBehaviour
     void Awake()
     {
         inputActions = new PlayerInputActions();
-        inputActions.Player.PlaceBullet.performed += ctx => TryPlaceBullet();
+        inputActions.Player.Shoot.performed += ctx => TryShoot();
     }
 
     void OnEnable()
@@ -41,6 +43,15 @@ public class GunController : MonoBehaviour
     {
         float delta = Time.deltaTime * GameManager.gameplaySpeed;
 
+        if (isCharging)
+        {
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0); // Layer 0
+            if (stateInfo.IsName("CrossbowCharge") && stateInfo.normalizedTime >= 1f)
+            {
+                isCharging = false;
+            }
+        }
+
         if (isReloading)
         {
             reloadTimer += delta;
@@ -55,20 +66,20 @@ public class GunController : MonoBehaviour
         if (isFrozen)
         {
             freezeTimer += Time.deltaTime;
-            if (bulletsPlaced >= maxBulletsPerFreeze || freezeTimer >= freezeDuration)
+            if (arrowsPlaced >= maxArrowsPerFreeze || freezeTimer >= freezeDuration)
             {
                 ResumeTime();
             }
         }
     }
 
-    void TryPlaceBullet()
+    void TryShoot()
     {
-        if (isReloading || bulletsPlaced >= maxBulletsPerFreeze)
+        if (isReloading || isCharging || arrowsPlaced >= maxArrowsPerFreeze)
             return;
 
-        PlaceBullet();
-        bulletsPlaced++;
+        Shoot();
+        arrowsPlaced++;
 
         if (!isFrozen)
         {
@@ -76,9 +87,11 @@ public class GunController : MonoBehaviour
         }
     }
 
-    void PlaceBullet()
+    void Shoot()
     {
-        Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+        animator.Play("CrossbowShoot");
+        isCharging = true;
+        Instantiate(arrowPrefab, muzzleTransform.position, muzzleTransform.rotation);
     }
 
     void StartFreeze()
@@ -94,6 +107,6 @@ public class GunController : MonoBehaviour
         isFrozen = false;
         isReloading = true;
         reloadTimer = 0f;
-        bulletsPlaced = 0;
+        arrowsPlaced = 0;
     }
 }

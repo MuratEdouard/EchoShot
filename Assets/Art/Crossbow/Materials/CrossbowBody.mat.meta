@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 875b1428a2f372f46bfbc7241ba03b90
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Materials/CrossbowBody.mat
+  uploadId: 375870

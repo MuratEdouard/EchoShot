@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cbe10cceadc386f44867975bdcf1269c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173597
+  packageName: HQ Crossbow
+  packageVersion: 1.0
+  assetPath: Assets/Crossbow/Prefabs/CrossbowAnimated.prefab
+  uploadId: 375870

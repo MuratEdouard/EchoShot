@@ -30,9 +30,19 @@ The game uses a **Stylized Semi-Realistic Jungle** environment with lush foliage
 
 ## 📦 Assets Used
 
-### Environment  
-**Athazagoraphobia – Stylized Jungles**  
+### Environment
+**Athazagoraphobia – Stylized Jungles**
 [https://assetstore.unity.com/packages/3d/environments/landscapes/athazagoraphobia-stylized-jungles-204433](https://assetstore.unity.com/packages/3d/environments/landscapes/athazagoraphobia-stylized-jungles-204433)
+Licensed for use in this project.
+
+### Weapon
+**HQ Crossbow**
+[https://assetstore.unity.com/packages/3d/props/weapons/hq-crossbow-173597](https://assetstore.unity.com/packages/3d/props/weapons/hq-crossbow-173597)
+Licensed for use in this project.
+
+### Sounds
+**Medieval Archery Combat - Crossbow, Bow and Arrow Sounds**
+[https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841](https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841)
 Licensed for use in this project.
 
 ---
