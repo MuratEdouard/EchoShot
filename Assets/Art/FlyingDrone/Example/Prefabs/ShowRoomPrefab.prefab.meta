@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cffcc1cf3f585024d861260ca928b23e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Example/Prefabs/ShowRoomPrefab.prefab
+  uploadId: 761089

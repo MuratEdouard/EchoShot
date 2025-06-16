@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dab34f246cf44fc4e8d66e79a486197f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Meshes/Materials/FlyingDrone_v1_Material.mat
+  uploadId: 761089

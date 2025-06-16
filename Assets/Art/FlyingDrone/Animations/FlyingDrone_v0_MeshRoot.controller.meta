@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b04f5817fc37e8444add15e561757091
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Animations/FlyingDrone_v0_MeshRoot.controller
+  uploadId: 761089

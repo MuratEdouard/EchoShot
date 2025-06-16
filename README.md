@@ -40,9 +40,28 @@ Licensed for use in this project.
 [https://assetstore.unity.com/packages/3d/props/weapons/hq-crossbow-173597](https://assetstore.unity.com/packages/3d/props/weapons/hq-crossbow-173597)
 Licensed for use in this project.
 
+### Enemies
+**Flying Drone Character**
+[https://assetstore.unity.com/packages/3d/characters/robots/flying-drone-character-321592](https://assetstore.unity.com/packages/3d/characters/robots/flying-drone-character-321592)
+Licensed for use in this project.
+
+**Fantasy Spider**
+[https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418](https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418)
+Licensed for use in this project.
+
 ### Sounds
 **Medieval Archery Combat - Crossbow, Bow and Arrow Sounds**
 [https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841](https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841)
+Licensed for use in this project.
+
+### Shaders
+**Character Effects (Shaders)**
+[https://assetstore.unity.com/packages/vfx/shaders/character-effects-shaders-304307](https://assetstore.unity.com/packages/vfx/shaders/character-effects-shaders-304307)
+Licensed for use in this project.
+
+### Primitive Shapes
+**FREE Ultimate Procedural Primitives**
+[https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955](https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955)
 Licensed for use in this project.
 
 ---

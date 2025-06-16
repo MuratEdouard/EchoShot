@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 61b9df18cd1c1714db8600e905e73e39
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/VFX/RocketFire.prefab
+  uploadId: 761089

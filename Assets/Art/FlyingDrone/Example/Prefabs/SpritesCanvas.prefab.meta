@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9a6839aae9f1e654e90ceb7561a5f72b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Example/Prefabs/SpritesCanvas.prefab
+  uploadId: 761089

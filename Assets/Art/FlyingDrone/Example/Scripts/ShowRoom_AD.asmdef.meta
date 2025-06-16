@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6e14b1172c5d12543b931631b996e6f0
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Example/Scripts/ShowRoom_AD.asmdef
+  uploadId: 761089

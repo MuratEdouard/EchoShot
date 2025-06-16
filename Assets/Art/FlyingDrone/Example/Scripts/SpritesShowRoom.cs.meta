@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d4701dc160cfe174fbf5ddd6b374ce33
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321592
+  packageName: Flying Drone Character
+  packageVersion: 1.0
+  assetPath: Assets/3D Models/Characters/Robots/FlyingDrone/Example/Scripts/SpritesShowRoom.cs
+  uploadId: 761089
