@@ -64,6 +64,12 @@ Licensed for use in this project.
 [https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955](https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955)
 Licensed for use in this project.
 
+### Sky Boxes
+**Fantasy Skybox FREE**
+[https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
+Licensed for use in this project.
+
+
 ---
 
 ## 💻 Technologies
