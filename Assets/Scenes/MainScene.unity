@@ -1145,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckboards (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4139093800809080019, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 8290754247350565281, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -1244,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -2517,48 +2525,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4339343
+      value: -0.43397626
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.97339
+      value: 4.9777455
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.853226
+      value: 32.844955
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710665
+      value: 0.70776355
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.00036970162
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710695
+      value: -0.7064486
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.001069711
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.057
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: -89.893
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806655539, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 4139093800806890003, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Name
       value: Duckboards (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4139093800809080019, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 8290754247350565281, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -2580,6 +2592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -2723,6 +2739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -2931,6 +2951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckboards (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4139093800809080019, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 8290754247350565281, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -3614,6 +3638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -4211,6 +4239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckboards (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4139093800809080019, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 8290754247350565281, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -5040,6 +5072,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4425304947135299110, guid: 0ca4483995f2464408a5eb622ce50ac0, type: 3}
   m_PrefabInstance: {fileID: 1201461290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1237411420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237411422}
+  - component: {fileID: 1237411421}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1237411421
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237411420}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 187691e1e7b19e778baa8bf152b689e3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 187691e1e7b19e778baa8bf152b689e3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1237411422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237411420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.82062, y: 16.57859, z: 15.2255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1250987695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7407443492751878946, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
@@ -5124,6 +5285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckboards
       objectReference: {fileID: 0}
+    - target: {fileID: 4139093800809080019, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 8290754247350565281, guid: 7c8c40f340bb8eb4cab0cc847744567b, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -6226,6 +6391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -7381,6 +7550,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs 1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1185890248422458121, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 463e2948893246e4ba706d51223e3cb9, type: 2}
     - target: {fileID: 3374401791845602884, guid: 6b27661f63130aa4297b0a12426bcbfa, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -9953,3 +10126,4 @@ SceneRoots:
   - {fileID: 196942771}
   - {fileID: 349309957}
   - {fileID: 869948388}
+  - {fileID: 1237411422}
