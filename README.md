@@ -30,6 +30,7 @@ The game uses a **Stylized Semi-Realistic Jungle** environment with lush foliage
 
 ## 📦 Assets Used
 
+
 ### Environment
 **Athazagoraphobia – Stylized Jungles**
 [https://assetstore.unity.com/packages/3d/environments/landscapes/athazagoraphobia-stylized-jungles-204433](https://assetstore.unity.com/packages/3d/environments/landscapes/athazagoraphobia-stylized-jungles-204433)
@@ -48,6 +49,7 @@ Licensed for use in this project.
 **Fantasy Spider**
 [https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418](https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418)
 Licensed for use in this project.
+
 
 ### Sounds
 **running in grass - EvanSki (Freesound)**
@@ -74,19 +76,28 @@ Licensed for use in this project.
 [https://freesound.org/people/C3Sabertooth/sounds/480870/](https://freesound.org/people/C3Sabertooth/sounds/480870/)
 Licensed for use in this project.
 
-**Medieval Archery Combat - Crossbow, Bow and Arrow Sounds**
-[https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841](https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841)
+**Medium Explosion - JuveriSetila (Freesound)**
+[https://pixabay.com/sound-effects/medium-explosion-40472/](https://pixabay.com/sound-effects/medium-explosion-40472/)
 Licensed for use in this project.
+
 
 ### Shaders
 **Character Effects (Shaders)**
 [https://assetstore.unity.com/packages/vfx/shaders/character-effects-shaders-304307](https://assetstore.unity.com/packages/vfx/shaders/character-effects-shaders-304307)
 Licensed for use in this project.
 
+
+### Particles
+**Particle Pack**
+[https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325](https://assetstore.unity.com/packages/vfx/particles/particle-pack-127325)
+Licensed for use in this project.
+
+
 ### Primitive Shapes
 **FREE Ultimate Procedural Primitives**
 [https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955](https://assetstore.unity.com/packages/tools/level-design/free-ultimate-procedural-primitives-227955)
 Licensed for use in this project.
+
 
 ### Sky Boxes
 **Fantasy Skybox FREE**
