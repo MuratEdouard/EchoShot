@@ -84,7 +84,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FogDepthMultiplier: 0.5
-    - _FogIntensity: 0.3
+    - _FogIntensity: 0.4
     - _FogOffset: 1
     - _FogSmoothness: 1
     - _GlossMapScale: 1

@@ -50,6 +50,30 @@ Licensed for use in this project.
 Licensed for use in this project.
 
 ### Sounds
+**running in grass - EvanSki (Freesound)**
+[https://pixabay.com/sound-effects/running-in-grass-6237/](https://pixabay.com/sound-effects/running-in-grass-6237/)
+Licensed for use in this project.
+
+**RUNNING 1 - vmgraw (Freesound)**
+[https://pixabay.com/sound-effects/running-1-6846/](https://pixabay.com/sound-effects/running-1-6846/)
+Licensed for use in this project.
+
+**Jump Landing - meggiepie (Freesound)**
+[https://pixabay.com/sound-effects/jump-landing-30946/](https://pixabay.com/sound-effects/jump-landing-30946/)
+Licensed for use in this project.
+
+**Sci-Fi SFX (11)**
+[https://pixabay.com/sound-effects/sci-fi-sfx-11-350835/](https://pixabay.com/sound-effects/sci-fi-sfx-11-350835/)
+Licensed for use in this project.
+
+**Arming a Sci-Fi Gun**
+[https://freesound.org/people/jackolous/sounds/645778/](https://freesound.org/people/jackolous/sounds/645778/)
+Licensed for use in this project.
+
+**LAUNCH (Futuristic)**
+[https://freesound.org/people/C3Sabertooth/sounds/480870/](https://freesound.org/people/C3Sabertooth/sounds/480870/)
+Licensed for use in this project.
+
 **Medieval Archery Combat - Crossbow, Bow and Arrow Sounds**
 [https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841](https://assetstore.unity.com/packages/audio/sound-fx/medieval-archery-combat-crossbow-bow-and-arrow-sounds-265841)
 Licensed for use in this project.

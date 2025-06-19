@@ -4,9 +4,16 @@ using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
+    [Header("Arrow & Muzzle")]
     public GameObject arrowPrefab;
     public Transform muzzleTransform;
+
+    [Header("Animator")]
     public Animator animator;
+
+    [Header("Audio Sources")]
+    public AudioSource shootAudio;
+    public AudioSource reloadAudio;
 
     [Header("Freeze Settings")]
     public float freezeDuration = 2f;
@@ -45,7 +52,7 @@ public class GunController : MonoBehaviour
 
         if (isCharging)
         {
-            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0); // Layer 0
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.IsName("CrossbowCharge") && stateInfo.normalizedTime >= 1f)
             {
                 isCharging = false;
@@ -90,6 +97,7 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         animator.Play("CrossbowShoot");
+        shootAudio.Play(); // 🔊 Play shoot sound
         isCharging = true;
         Instantiate(arrowPrefab, muzzleTransform.position, muzzleTransform.rotation);
     }
@@ -108,5 +116,7 @@ public class GunController : MonoBehaviour
         isReloading = true;
         reloadTimer = 0f;
         arrowsPlaced = 0;
+
+        reloadAudio.Play(); // 🔊 Play reload sound
     }
 }

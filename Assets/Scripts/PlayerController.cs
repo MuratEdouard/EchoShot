@@ -2,16 +2,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // ───────────────────── Movement Settings ─────────────────────
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float jumpVelocity = 12f; // Initial upward velocity
-    public float gravity = -20f;    // Custom gravity (stronger for snappy feel)
+
+    [Header("Jump Settings")]
+    public float jumpVelocity = 12f;
+    public int maxJumps = 2;
+    public float gravity = -20f;
+
+    [Header("Air Control")]
+    public float airAcceleration = 5f;
+    public float airDeceleration = 8f;
+    public float airControlResponsiveness = 1.5f;
+
+    // ───────────────────── Camera Settings ─────────────────────
+    [Header("Camera Settings")]
     public float mouseSensitivity = 2f;
     public Transform cameraTransform;
 
-    public float airAcceleration = 5f;   // How fast to reach target velocity in air
-    public float airDeceleration = 8f;   // How fast to slow down in air
-    public float airControlResponsiveness = 1.5f; // Air control multiplier (more = better control)
+    // ───────────────────── Footstep Settings ─────────────────────
+    [Header("Footstep Settings")]
+    public float footstepInterval = 0.4f;
 
+    // ───────────────────── Audio References ─────────────────────
+    [Header("Audio Sources")]
+    public AudioSource jumpAudio;
+    public AudioSource airJumpAudio;
+    public AudioSource landAudio;
+    public AudioSource walkAudio;
+
+    // Internal
     private Rigidbody rb;
     private float verticalLookRotation = 0f;
 
@@ -20,14 +41,13 @@ public class PlayerController : MonoBehaviour
     private bool jumpPressed;
 
     private int jumpCount = 0;
-    private int maxJumps = 2;
-
-    private float velocityY = 0f; // Custom vertical velocity
-    private Vector3 velocityX = Vector3.zero; // Horizontal velocity
+    private float velocityY = 0f;
+    private Vector3 velocityX = Vector3.zero;
 
     private PlayerInputActions inputActions;
-
-    private bool IsGrounded = false; // Track grounded state
+    private bool IsGrounded = false;
+    private bool wasGrounded = false;
+    private float footstepTimer = 0f;
 
     void Awake()
     {
@@ -66,24 +86,47 @@ public class PlayerController : MonoBehaviour
         lookInput = inputActions.Player.Look.ReadValue<Vector2>() * speedFactor;
         LookAround();
 
+        // Handle jumping
         if (jumpPressed && jumpCount < maxJumps)
         {
             velocityY = jumpVelocity;
             jumpPressed = false;
             jumpCount++;
-            IsGrounded = false; // Left ground on jump
+            IsGrounded = false;
+            if (jumpCount == 1)
+                jumpAudio.Play();
+            else
+                airJumpAudio.Play();
+        }
+
+        // Handle footsteps
+        if (IsGrounded && moveInput.magnitude > 0.1f)
+        {
+            footstepTimer += Time.deltaTime;
+            if (footstepTimer >= footstepInterval)
+            {
+                walkAudio.pitch = Random.Range(0.95f, 1.05f); // Optional variation
+                walkAudio.Play();
+                footstepTimer = 0f;
+            }
+        }
+        else
+        {
+            walkAudio.Stop();
+            footstepTimer = 0f;
         }
     }
 
     void FixedUpdate()
     {
+        wasGrounded = IsGrounded;
+
         float delta = Time.fixedDeltaTime;
         float timeScale = GameManager.gameplaySpeed;
 
-        // Apply gravity (vertical velocity)
+        // Apply gravity
         velocityY += gravity * delta * timeScale;
 
-        // Calculate target horizontal velocity (XZ plane)
         Vector3 inputDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
         Vector3 targetVelocity = inputDirection.normalized * moveSpeed;
 
@@ -95,9 +138,8 @@ public class PlayerController : MonoBehaviour
         {
             if (moveInput.magnitude > 0.1f)
             {
-                // Alignment-based air control
                 float alignment = Vector3.Dot(velocityX.normalized, targetVelocity.normalized);
-                alignment = (alignment + 1f) * 0.5f; // [-1,1] → [0,1]
+                alignment = (alignment + 1f) * 0.5f;
 
                 float blendFactor = airAcceleration * delta * Mathf.Lerp(0.5f, 2f, alignment) * airControlResponsiveness;
                 velocityX = Vector3.Lerp(velocityX, targetVelocity, blendFactor);
@@ -107,19 +149,14 @@ public class PlayerController : MonoBehaviour
                 velocityX = Vector3.MoveTowards(velocityX, Vector3.zero, airDeceleration * delta);
             }
 
-            // Optional: Clamp to max speed
             if (velocityX.magnitude > moveSpeed)
                 velocityX = velocityX.normalized * moveSpeed;
         }
 
-        // Movement vectors
         Vector3 horizontalMove = velocityX * delta * timeScale;
         Vector3 verticalMove = Vector3.up * velocityY * delta * timeScale;
 
-        // Apply movement
         rb.MovePosition(rb.position + horizontalMove + verticalMove);
-
-        // Prevent physics drift
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
@@ -144,6 +181,12 @@ public class PlayerController : MonoBehaviour
             {
                 velocityY = 0f;
                 jumpCount = 0;
+
+                if (!IsGrounded && !wasGrounded)
+                {
+                    landAudio.Play();
+                }
+
                 IsGrounded = true;
                 break;
             }
