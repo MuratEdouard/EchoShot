@@ -1,7 +1,25 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    // ───────────────────── UI Settings ─────────────────────
+    [Header("UI")]
+    public CanvasGroup damageFlashGroup;
+    public float flashDuration = 0.2f;
+
+    private Coroutine flashCoroutine;
+
+    // ───────────────────── Health Settings ─────────────────────
+    [Header("Health Settings")]
+    public int maxHits = 3;
+    public float recoveryDelay = 5f;
+    public AudioSource hurtAudio;
+
+    private int currentHits = 0;
+    private float timeSinceLastHit = 0f;
+    private bool isDead = false;
+
     // ───────────────────── Movement Settings ─────────────────────
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -115,6 +133,17 @@ public class PlayerController : MonoBehaviour
             walkAudio.Stop();
             footstepTimer = 0f;
         }
+
+        if (!isDead && currentHits > 0)
+        {
+            timeSinceLastHit += Time.deltaTime;
+
+            if (timeSinceLastHit >= recoveryDelay)
+            {
+                currentHits = 0;
+                Debug.Log("Player recovered");
+            }
+        }
     }
 
     void FixedUpdate()
@@ -192,4 +221,55 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    IEnumerator FlashRed()
+    {
+        if (damageFlashGroup == null) yield break;
+
+        damageFlashGroup.alpha = 1f;
+        float timer = 0f;
+
+        while (timer < flashDuration)
+        {
+            timer += Time.deltaTime;
+            damageFlashGroup.alpha = Mathf.Lerp(1f, 0f, timer / flashDuration);
+            yield return null;
+        }
+
+        damageFlashGroup.alpha = 0f;
+    }
+
+    public void TakeLaserHit()
+    {
+        if (isDead) return;
+
+        currentHits++;
+        timeSinceLastHit = 0f;
+
+        if (hurtAudio) hurtAudio.Play();
+
+        Debug.Log($"Player hit! {currentHits}/{maxHits}");
+
+        if (currentHits >= maxHits)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        isDead = true;
+
+        Debug.Log("Player died!");
+
+        // Disable movement
+        inputActions.Disable();
+        rb.linearVelocity = Vector3.zero;
+        rb.isKinematic = false; // Optional: fall to ground
+        rb.constraints = RigidbodyConstraints.None;
+
+        // Optional: play death animation, ragdoll, or reload scene
+    }
+
+
 }

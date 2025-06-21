@@ -102,7 +102,9 @@ public class FlyingDrone : MonoBehaviour
     {
         if (laserPrefab == null || laserSpawnPoint == null) return;
 
-        Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
+        Vector3 toPlayer = ((target.position + (Vector3.up * 0.5f)) - laserSpawnPoint.position).normalized;
+        Quaternion rotationToPlayer = Quaternion.LookRotation(toPlayer);
+        Instantiate(laserPrefab, laserSpawnPoint.position, rotationToPlayer);
     }
 
     bool CanSeePlayer()

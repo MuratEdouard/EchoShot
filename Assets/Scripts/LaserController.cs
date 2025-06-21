@@ -5,7 +5,6 @@ public class LaserController : MonoBehaviour
 {
     public float speed = 100f;
     public float lifeTime = 2f;
-    public GameObject explosionEffectPrefab;
 
     private float lifeTimer = 0f;
     private float fullSpeedTimeElapsed = 0f;
@@ -39,15 +38,11 @@ public class LaserController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Explode();
-    }
-
-    void Explode()
-    {
-        if (explosionEffectPrefab != null)
+        if (other.CompareTag("Player"))
         {
-            Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            other.GetComponent<PlayerController>()?.TakeLaserHit();
         }
+
         Destroy(gameObject);
     }
 }
