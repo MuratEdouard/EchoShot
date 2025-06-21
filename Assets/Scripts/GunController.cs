@@ -28,12 +28,27 @@ public class GunController : MonoBehaviour
     private bool isCharging = false;
     private bool isReloading = false;
 
+    private bool shootButtonWasReleased = false;
+
     private PlayerInputActions inputActions;
 
     void Awake()
     {
         inputActions = new PlayerInputActions();
-        inputActions.Player.Shoot.performed += ctx => TryShoot();
+
+        inputActions.Player.Shoot.started += ctx =>
+        {
+            if (shootButtonWasReleased)
+            {
+                TryShoot();
+                shootButtonWasReleased = false;
+            }
+        };
+
+        inputActions.Player.Shoot.canceled += ctx =>
+        {
+            shootButtonWasReleased = true;
+        };
     }
 
     void OnEnable()
@@ -97,7 +112,7 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         animator.Play("CrossbowShoot");
-        shootAudio.Play(); // 🔊 Play shoot sound
+        shootAudio.Play();
         isCharging = true;
         Instantiate(arrowPrefab, muzzleTransform.position, muzzleTransform.rotation);
     }
@@ -117,6 +132,6 @@ public class GunController : MonoBehaviour
         reloadTimer = 0f;
         arrowsPlaced = 0;
 
-        reloadAudio.Play(); // 🔊 Play reload sound
+        reloadAudio.Play();
     }
 }

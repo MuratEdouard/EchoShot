@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        GameManager.initialized = false;
     }
 
     public void OnDroneClicked(Hoverable clickedDrone)

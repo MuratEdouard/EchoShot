@@ -4,7 +4,6 @@ using UnityEngine.AI;
 public class Enemies : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int nbEnemies = 10;
     public Vector3 spawnAreaCenter = Vector3.zero;
     public Vector3 spawnAreaSize = new Vector3(100, 20, 100);
 
@@ -12,7 +11,7 @@ public class Enemies : MonoBehaviour
 
     void Start()
     {
-        while (nbPlacedEnemies < nbEnemies)
+        while (nbPlacedEnemies < GameManager.nbEnemiesSummoned)
         {
             SpawnEnemy();
         }

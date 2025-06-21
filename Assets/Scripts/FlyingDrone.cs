@@ -182,6 +182,8 @@ public class FlyingDrone : MonoBehaviour
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
         }
 
+        GameManager.nbEnemiesDefeated += 1;
+
         Destroy(gameObject);
     }
 }
