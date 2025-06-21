@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 // Copyright (c) 2025 Erochin Semyon. All rights reserved
 // Licensed under the Standard Unity Asset Store EULA License for Unity users
 
@@ -51,3 +53,5 @@ namespace Voo.ShowRoom
         }
     }
 }
+
+#endif

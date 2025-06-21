@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         inputActions = new PlayerInputActions();
-        inputActions.UI.Quit.performed += ctx => QuitGame(); // Add binding in input actions!
+        inputActions.UI.Quit.performed += ctx => QuitGame();
     }
 
     void OnEnable()

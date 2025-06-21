@@ -12,6 +12,15 @@ public class FlyingDrone : MonoBehaviour
     [Header("Explosion Settings")]
     public GameObject explosionEffectPrefab;
 
+    [Header("Laser Settings")]
+    public GameObject laserPrefab;
+    public Transform laserSpawnPoint;
+    public float laserCooldown = 2f;
+    public float firingAngleTolerance = 15f; // In degrees
+
+    private float laserTimer = 0f;
+
+
     // Stuck detection variables
     private Vector3 lastPosition;
     private float stuckTimer = 0f;
@@ -71,8 +80,48 @@ public class FlyingDrone : MonoBehaviour
             }
         }
 
+        // Fire if chasing player and facing them
+        if (chasingPlayer && CanSeePlayer())
+        {
+            laserTimer += Time.deltaTime;
+            if (laserTimer >= laserCooldown)
+            {
+                FireLaser();
+                laserTimer = 0f;
+            }
+        }
+
+
         DetectIfStuck();
     }
+
+    void FireLaser()
+    {
+        if (laserPrefab == null || laserSpawnPoint == null) return;
+
+        Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
+    }
+
+    bool CanSeePlayer()
+    {
+        if (target == null) return false;
+
+        Vector3 toPlayer = (target.position - transform.position).normalized;
+        float angle = Vector3.Angle(transform.forward, toPlayer);
+
+        if (angle <= firingAngleTolerance)
+        {
+            Ray ray = new Ray(laserSpawnPoint.position, toPlayer);
+            if (Physics.Raycast(ray, out RaycastHit hit, detectionRadius))
+            {
+                return hit.transform == target;
+            }
+        }
+
+        return false;
+    }
+
+
 
     void SetRandomPatrolPoint()
     {

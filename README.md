@@ -1,14 +1,14 @@
 # 🎮 Echo Shot
 
 _A precision tactical shooter with time-slowing bullets and advanced movement, created for [**GJL Game Parade "Spring" 2025**](https://itch.io/jam/gjl-game-parade-spring-2025)._  
-Built with Unity (URP) featuring stylized semi-realistic jungle visuals.
+Built with Unity (URP) featuring stylized semi-realistic ruin visuals.
 
 ---
 
 ## 🧠 Concept
 
 In **Echo Shot**, firing your **first bullet slows down time**, letting you plan your next moves carefully.  
-When you fire the **third bullet**, time resumes to normal speed and your gun automatically reloads.  
+When you fire the **third bullet** or enough time as passed, the game resumes to normal speed and your gun automatically reloads.  
 Master movement with a **double jump** mechanic to evade enemies and reposition tactically.
 
 ---
@@ -17,8 +17,8 @@ Master movement with a **double jump** mechanic to evade enemies and reposition 
 
 - **Left Click (tap repeatedly)** – Place and fire bullets one by one  
 - **Time Slow** – Triggered on firing the first bullet  
-- **Time Resume** – Happens after firing the third bullet, reload starts  
-- **Double Jump** – Use jump twice to navigate vertically and avoid attacks  
+- **Time Resume** – Happens after firing the third bullet or after enough time as passed, reload starts  
+- **Double Jump** – Jump twice to navigate vertically and avoid attacks  
 
 ---
 
@@ -44,10 +44,6 @@ Licensed for use in this project.
 ### Enemies
 **Flying Drone Character**
 [https://assetstore.unity.com/packages/3d/characters/robots/flying-drone-character-321592](https://assetstore.unity.com/packages/3d/characters/robots/flying-drone-character-321592)
-Licensed for use in this project.
-
-**Fantasy Spider**
-[https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418](https://assetstore.unity.com/packages/3d/characters/animals/insects/fantasy-spider-236418)
 Licensed for use in this project.
 
 
@@ -78,6 +74,10 @@ Licensed for use in this project.
 
 **Medium Explosion - JuveriSetila (Freesound)**
 [https://pixabay.com/sound-effects/medium-explosion-40472/](https://pixabay.com/sound-effects/medium-explosion-40472/)
+Licensed for use in this project.
+
+**Drone - tec_studio (Freesound)**
+[https://pixabay.com/sound-effects/drone-7149/](https://pixabay.com/sound-effects/drone-7149/)
 Licensed for use in this project.
 
 
