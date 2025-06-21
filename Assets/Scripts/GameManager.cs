@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
     public static int nbEnemiesSummoned;
     public static int nbEnemiesDefeated = 0;
     public static bool initialized = false;
-    
+
     private float checkTimer = 0f;
     private bool winTriggered = false;
     private bool lossTriggered = false;
-    private float gameplayTimeLeft;
+    private static float gameplayTimeLeft;
 
     private PlayerInputActions inputActions;
 
@@ -89,6 +89,11 @@ public class GameManager : MonoBehaviour
         timeLeftText.text = gameplayTimeLeft.ToString("0.##");
     }
 
+    public static void TriggerLoss()
+    {
+        gameplayTimeLeft = 0f;
+    }
+
     private IEnumerator WinSequence()
     {
         nbEnemiesDefeatedWinText.text = nbEnemiesDefeated.ToString() + " enemies defeated";
@@ -136,7 +141,7 @@ public class GameManager : MonoBehaviour
 
         nbEnemiesSummoned = initialNbEnemiesSummoned;
 
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MenuScene");
         gameplayTimeLeft = gameplayTimeMax;
     }
 

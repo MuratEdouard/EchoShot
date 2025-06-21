@@ -5,7 +5,7 @@ public class Enemies : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Vector3 spawnAreaCenter = Vector3.zero;
-    public Vector3 spawnAreaSize = new Vector3(100, 20, 100);
+    public Vector3 spawnAreaSize = new Vector3(80, 20, 80);
 
     private int nbPlacedEnemies = 0;
 

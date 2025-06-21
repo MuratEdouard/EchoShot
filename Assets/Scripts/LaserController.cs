@@ -41,8 +41,7 @@ public class LaserController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerController>()?.TakeLaserHit();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

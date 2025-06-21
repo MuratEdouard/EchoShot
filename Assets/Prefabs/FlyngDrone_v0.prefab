@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 8411506238827490066}
-  normalSpeed: 5
+  normalSpeed: 8
   patrolRadius: 45
-  detectionRadius: 30
+  detectionRadius: 55
   waypointTolerance: 1
   explosionEffectPrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
   laserPrefab: {fileID: 91037462446642868, guid: 3a0cd315da73ccebcb89b5e6b20adc63, type: 3}

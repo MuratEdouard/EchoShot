@@ -5,9 +5,9 @@ public class FlyingDrone : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float normalSpeed = 1f;
-    public float patrolRadius = 30f;     // Radius to pick random patrol points
-    public float detectionRadius = 15f;  // Distance to start chasing player
-    public float waypointTolerance = 1f; // How close to get to patrol point
+    public float patrolRadius = 45f;     // Radius to pick random patrol points
+    public float detectionRadius = 30f;  // Distance to start chasing player
+    public float waypointTolerance = 2f; // How close to get to patrol point
 
     [Header("Explosion Settings")]
     public GameObject explosionEffectPrefab;
@@ -15,8 +15,8 @@ public class FlyingDrone : MonoBehaviour
     [Header("Laser Settings")]
     public GameObject laserPrefab;
     public Transform laserSpawnPoint;
-    public float laserCooldown = 2f;
-    public float firingAngleTolerance = 45f; // In degrees
+    public float laserCooldown = 0.5f;
+    public float firingAngleTolerance = 250f; // In degrees
 
     private float laserTimer = 0f;
 
@@ -111,17 +111,16 @@ public class FlyingDrone : MonoBehaviour
     {
         if (target == null) return false;
 
-        Vector3 toPlayer = (target.position - transform.position);
-        float angle = Vector3.Angle(transform.forward, toPlayer.normalized);
+        Vector3 toPlayer = target.position - transform.position;
 
-        if (angle <= firingAngleTolerance)
-        {
-            return true;
-        }
+        // Ignore vertical component for angle check
+        Vector3 forwardFlat = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
+        Vector3 toPlayerFlat = new Vector3(toPlayer.x, 0, toPlayer.z).normalized;
 
-        return false;
+        float angle = Vector3.Angle(forwardFlat, toPlayerFlat);
+
+        return angle <= firingAngleTolerance;
     }
-
 
 
     void SetRandomPatrolPoint()

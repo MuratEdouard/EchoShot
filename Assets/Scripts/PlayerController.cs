@@ -1,24 +1,20 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     // ───────────────────── UI Settings ─────────────────────
     [Header("UI")]
     public CanvasGroup damageFlashGroup;
-    public float flashDuration = 0.2f;
+    public float flashFadeSpeed = 0.2f;
+    public float damagePerHit = 0.15f;
 
-    private Coroutine flashCoroutine;
-
-    // ───────────────────── Health Settings ─────────────────────
-    [Header("Health Settings")]
-    public int maxHits = 3;
+    // ───────────────────── Damage Settings ─────────────────────
+    [Header("Damage Settings")]
     public float recoveryDelay = 5f;
     public AudioSource hurtAudio;
 
-    private int currentHits = 0;
-    private float timeSinceLastHit = 0f;
     private bool isDead = false;
+    private float timeSinceLastHit = 0f;
 
     // ───────────────────── Movement Settings ─────────────────────
     [Header("Movement Settings")]
@@ -104,26 +100,24 @@ public class PlayerController : MonoBehaviour
         lookInput = inputActions.Player.Look.ReadValue<Vector2>() * speedFactor;
         LookAround();
 
-        // Handle jumping
+        // Jump
         if (jumpPressed && jumpCount < maxJumps)
         {
             velocityY = jumpVelocity;
             jumpPressed = false;
             jumpCount++;
             IsGrounded = false;
-            if (jumpCount == 1)
-                jumpAudio.Play();
-            else
-                airJumpAudio.Play();
+            if (jumpCount == 1) jumpAudio.Play();
+            else airJumpAudio.Play();
         }
 
-        // Handle footsteps
+        // Footsteps
         if (IsGrounded && moveInput.magnitude > 0.1f)
         {
             footstepTimer += Time.deltaTime;
             if (footstepTimer >= footstepInterval)
             {
-                walkAudio.pitch = Random.Range(0.95f, 1.05f); // Optional variation
+                walkAudio.pitch = Random.Range(0.95f, 1.05f);
                 walkAudio.Play();
                 footstepTimer = 0f;
             }
@@ -134,15 +128,33 @@ public class PlayerController : MonoBehaviour
             footstepTimer = 0f;
         }
 
-        if (!isDead && currentHits > 0)
+        if (!isDead)
         {
             timeSinceLastHit += Time.deltaTime;
+        }
 
-            if (timeSinceLastHit >= recoveryDelay)
-            {
-                currentHits = 0;
-                Debug.Log("Player recovered");
-            }
+        UpdateDamageFlash();
+    }
+
+    void UpdateDamageFlash()
+    {
+        if (damageFlashGroup == null) return;
+
+        if (isDead)
+        {
+            damageFlashGroup.alpha = 1f;
+            return;
+        }
+
+        float speed = flashFadeSpeed * Time.deltaTime;
+
+        // Fade back to 0 over time
+        float targetAlpha = Mathf.MoveTowards(damageFlashGroup.alpha, 0f, speed);
+        damageFlashGroup.alpha = targetAlpha;
+
+        if (damageFlashGroup.alpha >= 0.5f)
+        {
+            Die();
         }
     }
 
@@ -153,7 +165,6 @@ public class PlayerController : MonoBehaviour
         float delta = Time.fixedDeltaTime;
         float timeScale = GameManager.gameplaySpeed;
 
-        // Apply gravity
         velocityY += gravity * delta * timeScale;
 
         Vector3 inputDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
@@ -222,35 +233,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator FlashRed()
-    {
-        if (damageFlashGroup == null) yield break;
-
-        damageFlashGroup.alpha = 1f;
-        float timer = 0f;
-
-        while (timer < flashDuration)
-        {
-            timer += Time.deltaTime;
-            damageFlashGroup.alpha = Mathf.Lerp(1f, 0f, timer / flashDuration);
-            yield return null;
-        }
-
-        damageFlashGroup.alpha = 0f;
-    }
-
     public void TakeLaserHit()
     {
         if (isDead) return;
 
-        currentHits++;
         timeSinceLastHit = 0f;
 
         if (hurtAudio) hurtAudio.Play();
 
-        Debug.Log($"Player hit! {currentHits}/{maxHits}");
+        // Increase red alpha
+        damageFlashGroup.alpha += damagePerHit;
+        damageFlashGroup.alpha = Mathf.Clamp01(damageFlashGroup.alpha);
 
-        if (currentHits >= maxHits)
+        Debug.Log($"Damage alpha: {damageFlashGroup.alpha}");
+
+        if (damageFlashGroup.alpha >= 0.5f)
         {
             Die();
         }
@@ -258,18 +255,18 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        isDead = true;
+        if (isDead) return;
 
+        isDead = true;
         Debug.Log("Player died!");
 
-        // Disable movement
+        damageFlashGroup.alpha = 1f;
+
         inputActions.Disable();
         rb.linearVelocity = Vector3.zero;
-        rb.isKinematic = false; // Optional: fall to ground
+        rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.None;
 
-        // Optional: play death animation, ragdoll, or reload scene
+        GameManager.TriggerLoss();
     }
-
-
 }
