@@ -16,7 +16,7 @@ public class FlyingDrone : MonoBehaviour
     public GameObject laserPrefab;
     public Transform laserSpawnPoint;
     public float laserCooldown = 2f;
-    public float firingAngleTolerance = 15f; // In degrees
+    public float firingAngleTolerance = 45f; // In degrees
 
     private float laserTimer = 0f;
 
@@ -50,6 +50,9 @@ public class FlyingDrone : MonoBehaviour
         startPosition = transform.position;
         SetRandomPatrolPoint();
         lastPosition = transform.position;
+
+        laserTimer = Random.Range(0f, laserCooldown);
+
     }
 
     void Update()
@@ -106,16 +109,12 @@ public class FlyingDrone : MonoBehaviour
     {
         if (target == null) return false;
 
-        Vector3 toPlayer = (target.position - transform.position).normalized;
-        float angle = Vector3.Angle(transform.forward, toPlayer);
+        Vector3 toPlayer = (target.position - transform.position);
+        float angle = Vector3.Angle(transform.forward, toPlayer.normalized);
 
         if (angle <= firingAngleTolerance)
         {
-            Ray ray = new Ray(laserSpawnPoint.position, toPlayer);
-            if (Physics.Raycast(ray, out RaycastHit hit, detectionRadius))
-            {
-                return hit.transform == target;
-            }
+            return true;
         }
 
         return false;

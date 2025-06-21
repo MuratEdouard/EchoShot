@@ -157,7 +157,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 2
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b5d0d38256d877082a07eb03ed0bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  lifeTime: 2
+  speed: 10
+  lifeTime: 5
   explosionEffectPrefab: {fileID: 8879577745757640234, guid: fe15b288db6524424935d96a84414b7c, type: 3}
 --- !u!82 &6257937041806931106
 AudioSource:

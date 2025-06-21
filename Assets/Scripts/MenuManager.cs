@@ -3,6 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    private PlayerInputActions inputActions;
+
+    void Awake()
+    {
+        inputActions = new PlayerInputActions();
+        inputActions.UI.Quit.performed += ctx => QuitMenu();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,12 +31,28 @@ public class MenuManager : MonoBehaviour
                 break;
 
             case "QuitDrone":
-                Application.Quit();
-    #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-    #endif
+                QuitMenu();
                 break;
         }
+    }
+
+
+    void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
+    void QuitMenu()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
 }
